@@ -16,15 +16,14 @@ api = tweepy.API(auth)
 # For ex; q='#example'
 for tweet in tweepy.Cursor(api.search, q='#kittens').items():
     try:
-	print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)   
-    tweet.retweet()
-    print('Retweeted')
-	sleep(20) # Sleep Time, Should be >5 to avoid blocking
-        
+        print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
+        tweet.retweet()
+        print('Retweeted')
+        sleep(20) # Sleep Time, Should be >5 to avoid blocking
+
 
     except tweepy.TweepError as error:
         print(error.reason)
 
     except StopIteration:
         break
-

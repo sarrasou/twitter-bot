@@ -19,14 +19,13 @@ for tweet in tweepy.Cursor(api.search, q='#kitten').items():
     # Prints Username who tweeted on Terminal
         print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
         if not tweet.user.following:
-		tweet.user.follow()  # Follows the user who tweeted
+		tweet.user.follow()
         print('Followed')
-	sleep(20) # Sleep Time, Should be >5 to avoid blocking
-        
+	    sleep(20) # Sleep Time, Should be >5 to avoid blocking
+
 
     except tweepy.TweepError as error:
         print(error.reason)
 
     except StopIteration:
         break
-
