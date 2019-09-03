@@ -14,13 +14,14 @@ api = tweepy.API(auth)
 # Iterates for loop to search and retrive tweets
 # Replace q='#infosec' to your desired hashtag
 # For ex; q='#example'
-for tweet in tweepy.Cursor(api.search, q='#infosec').items():
+for tweet in tweepy.Cursor(api.search, q='#kitten').items():
     try:
-	print('Tweet by: @' + tweet.user.screen_name) # Prints Username who tweeted on Terminal        
-	if not tweet.user.following:        
-		tweet.user.follow() # Follows the user who tweeted
-        	print('Followed')
-	sleep(5) # Sleep Time, Should be >5 to avoid blocking
+    # Prints Username who tweeted on Terminal
+        print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
+        if not tweet.user.following:
+		tweet.user.follow()  # Follows the user who tweeted
+        print('Followed')
+	sleep(20) # Sleep Time, Should be >5 to avoid blocking
         
 
     except tweepy.TweepError as error:

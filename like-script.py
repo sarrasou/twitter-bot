@@ -14,17 +14,15 @@ api = tweepy.API(auth)
 # Iterates for loop to search and retrive tweets
 # Replace q='#infosec' to your desired hashtag
 # For ex; q='#example'
-for tweet in tweepy.Cursor(api.search, q='#infosec').items():
+for tweet in tweepy.Cursor(api.search, q='#kittens').items():
     try:
-	print('Tweet by: @' + tweet.user.screen_name) # Prints Username who tweeted on Terminal        
-        tweet.favorite() # Likes the tweet
+        print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
+        tweet.favorite()  # Likes the tweet
         print('Liked')
-	sleep(5) # Sleep Time, Should be >5 to avoid blocking
-        
+        sleep(20)  # Sleep Time, Should be >5 to avoid blocking
 
     except tweepy.TweepError as error:
         print(error.reason)
 
     except StopIteration:
         break
-
