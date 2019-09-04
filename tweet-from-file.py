@@ -27,4 +27,4 @@ for line_tweet in read_file:
 	pass
 
 # Sleep Time, Should be >5 to avoid blocking
-sleep(5)
+sleep(3600)

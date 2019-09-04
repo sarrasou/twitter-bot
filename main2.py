@@ -13,99 +13,22 @@ menu_actions  = {}
 def main_menu():
     os.system('clear')
 
-    print ("Welcome to Twitter-bot,\nDeveloped by Yash Mehta <https://github.com/y-mehta/twitter-bot>")
-    print ("What would you like to do ?")
-    print ("1. Tweet From a File")
-    print ("2. Follow users using a hashtag")
-    print ("3. Retweet using a hashtag")
-    print ("4. Like Tweets")
-    print ("\n0. Quit")
-    # choice = input(" >>  ")
-    exec_menu()
-
+    print ("Welcome to Twitter-bot")
+    print ("Functionality includes, follwoing, retweetm and Like")
+    print ("For the #kittens hashtag")
+    print ("tweet functionality of pictures and text to come \n")
+    menu()
     return
 
-# Execute menu
-def exec_menu():
-    os.system('clear')
-    menu()
-    # # ch = choice.lower()
-    # # if ch == '':
-    #     menu_actions['main_menu']()
-    # # else:
-    # for c in ch:
-    #     try:
-    #         menu_actions[ch]()
-    #     except KeyError:
-    #         print ("Invalid selection, please try again.\n")
-    #         menu_actions['main_menu']()
-    # return
-
-# Menu 1
-# def menu1():
-#     print ("Welcome,Tweet From a File!\n")
-#     os.system('python tweet-from-file.py')
-#     print ("9. Back")
-#     print ("0. Quit")
-#     choice = input(" >>  ")
-#     exec_menu(choice)
-#     return
-
-
-# Menu 2
 def menu():
     os.system('python3 follow-script.py')
     os.system('python retweet-script.py')
     os.system('python like-script.py')
     return
 
-# # Menu 3
-# def menu3():
-#     print ("Welcome, Retweet using a hashtag!\n")
-#     os.system('python retweet-script.py')
-#     print ("9. Back")
-#     print ("0. Quit")
-#     choice = input(" >>  ")
-#     exec_menu(choice)
-#     return
-
-# Menu 4
-# def menu4():
-#     print ("Welcome,Like Tweets!\n")
-#     os.system('python like-script.py')
-#     print ("9. Back")
-#     print ("0. Quit")
-#     choice = input(" >>  ")
-#     exec_menu(choice)
-#     return
-
-
-# Back to main menu
-def back():
-    menu_actions['main_menu']()
-
 # Exit program
 def exit():
     sys.exit()
-
-# =======================
-#    MENUS DEFINITIONS
-# =======================
-
-# Menu definition
-# menu_actions = {
-#     'main_menu': main_menu,
-#     '1': menu1,
-#     '2': menu2,
-#     '3': menu3,
-#     '4': menu4,
-#     '9': back,
-#     '0': exit,
-# }
-
-# =======================
-#      MAIN PROGRAM
-# =======================
 
 # Main Program
 if __name__ == "__main__":

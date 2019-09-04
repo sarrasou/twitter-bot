@@ -19,7 +19,7 @@ for tweet in tweepy.Cursor(api.search, q='#kittens').items():
         print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
         tweet.retweet()
         print('Retweeted')
-        sleep(20) # Sleep Time, Should be >5 to avoid blocking
+        sleep(3600) # Sleep Time, Should be >5 to avoid blocking
 
 
     except tweepy.TweepError as error:
