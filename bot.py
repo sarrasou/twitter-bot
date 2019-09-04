@@ -12,6 +12,8 @@ from lxml.html import fromstring
 import nltk
 nltk.download('punkt')
 
+import like-script
+
 
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
@@ -52,7 +54,7 @@ def scrape_thenewstack():
 
     url = 'https://thenewstack.io'
     
-    r = requests.get('https://thenewstack.io', verify=False)
+    r = requests.get(url, verify=False)
     tree = fromstring(r.content)
     links = tree.xpath('//div[@class="normalstory-box"]/header/h2/a/@href')
     for link in links:
@@ -71,7 +73,7 @@ def scrape_coursera():
 
     url = 'https://blog.coursera.org'
 
-    r = requests.get('https://blog.coursera.org', headers=HEADERS)
+    r = requests.get(url, headers=HEADERS)
     tree = fromstring(r.content)
     links = tree.xpath('//div[@class="recent"]//div[@class="title"]/a/@href')
     for link in links:
@@ -84,3 +86,27 @@ def scrape_coursera():
             continue
         
         yield '"%s" %s' % (text, link)
+
+def main():
+    """Encompasses the main loop of the bot."""
+    print('---Bot started---\n')
+    like = like_script()
+
+    #incorporating the like, retweet, etc functions
+
+    news_funcs = ['scrape_coursera', 'scrape_thenewstack']
+    news_iterators = []  
+    for func in news_funcs:
+        news_iterators.append(globals()[func]())
+    while True:
+        for i, iterator in enumerate(news_iterators):
+            try:
+                tweet = next(iterator)
+                t.statuses.update(status=tweet)
+                print(tweet, end='\n\n')
+                time.sleep(10)  
+            except StopIteration:
+                news_iterators[i] = globals()[news_funcs[i]]()
+
+if __name__ == "__main__":  
+    main()
