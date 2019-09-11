@@ -2,9 +2,10 @@
 
 import tweepy
 import time
+from time import sleep
 import os
 from config import *
-from time import sleep
+import photo_dict
 
 # Authorizes twitter app using credentials from config file
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -13,6 +14,7 @@ api = tweepy.API(auth)
 
 #doactivity here
 print("Welcome to twitter bot!")
+photo_dict
 os.chdir('kittens')
 for kitten in os.listdir('.'):
     api.update_with_media(kitten)
@@ -26,4 +28,3 @@ for kitten in os.listdir('.'):
         print("error removing file")
 
     time.sleep(60)
-#api.update_status("words")

@@ -89,26 +89,6 @@ def scrape_coursera():
 
         yield '"%s" %s' % (text, link)
 
-#Like function to like tweets every x amount of seconds based on a hashtag
-def like_script():
-    # Authorizes twitter app using credentials from config file
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-    api = tweepy.API(auth)
-
-    for tweet in tweepy.Cursor(api.search, q='#kittens').items():
-        try:
-            print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
-            tweet.favorite()  # Likes the tweet
-            print('Liked')
-            sleep(10)  # Sleep Time, Should be >5 to avoid blocking
-
-        except tweepy.TweepError as error:
-            print(error.reason)
-
-        except StopIteration:
-            break
-
 
 def main():
     """Encompasses the main loop of the bot."""
