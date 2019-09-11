@@ -2,17 +2,19 @@
 # from https://www.digitalocean.com/community/tutorials/how-to-scrape-web-pages-and-post-content-to-twitter-with-python-3
 
 import config
+from config import *
 from twitter import OAuth, Twitter
 import requests
 import random
 import time
-
+from time import sleep
+import tweepy
 from lxml.html import fromstring
-
 import nltk
 nltk.download('punkt')
 
-import like-script
+from bs4 import BeautifulSoup as soup
+import urllib.request
 
 
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
@@ -53,7 +55,7 @@ def scrape_thenewstack():
     """Scrapes news from thenewstack.io"""
 
     url = 'https://thenewstack.io'
-    
+
     r = requests.get(url, verify=False)
     tree = fromstring(r.content)
     links = tree.xpath('//div[@class="normalstory-box"]/header/h2/a/@href')
@@ -62,7 +64,7 @@ def scrape_thenewstack():
         tree = fromstring(r.content)
         paras = tree.xpath('//div[@class="post-content"]/p')
         para = extract_paratext(paras)
-        text = extract_text(para)  
+        text = extract_text(para)
         if not text:
             continue
 
@@ -84,18 +86,39 @@ def scrape_coursera():
         text = extract_text(para)
         if not text:
             continue
-        
+
         yield '"%s" %s' % (text, link)
+
+#Like function to like tweets every x amount of seconds based on a hashtag
+def like_script():
+    # Authorizes twitter app using credentials from config file
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+    api = tweepy.API(auth)
+
+    for tweet in tweepy.Cursor(api.search, q='#kittens').items():
+        try:
+            print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
+            tweet.favorite()  # Likes the tweet
+            print('Liked')
+            sleep(10)  # Sleep Time, Should be >5 to avoid blocking
+
+        except tweepy.TweepError as error:
+            print(error.reason)
+
+        except StopIteration:
+            break
+
 
 def main():
     """Encompasses the main loop of the bot."""
     print('---Bot started---\n')
-    like = like_script()
+    # like = like_script.like_script()
 
     #incorporating the like, retweet, etc functions
 
     news_funcs = ['scrape_coursera', 'scrape_thenewstack']
-    news_iterators = []  
+    news_iterators = []
     for func in news_funcs:
         news_iterators.append(globals()[func]())
     while True:
@@ -104,9 +127,9 @@ def main():
                 tweet = next(iterator)
                 t.statuses.update(status=tweet)
                 print(tweet, end='\n\n')
-                time.sleep(10)  
+                time.sleep(10)
             except StopIteration:
                 news_iterators[i] = globals()[news_funcs[i]]()
 
-if __name__ == "__main__":  
+if __name__ == "__main__":
     main()
