@@ -22,9 +22,9 @@ auto_file.close()
 for line_tweet in read_file:
     print(line_tweet)
     if line_tweet != '\n':
-	api.update_status(line_tweet)
+	    api.update_status(line_tweet)
     else:
-	pass
+	    pass
 
 # Sleep Time, Should be >5 to avoid blocking
 sleep(3600)

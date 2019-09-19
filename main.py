@@ -1,30 +1,14 @@
 # Author : Yash Mehta <https://github.com/y-mehta/twitter-bot>
 # Import the modules needed to run the script.
 import sys, os
+import subprocess
 
 # Main definition - constants
 menu_actions  = {}
 
-# =======================
-#     MENUS FUNCTIONS
-# =======================
-
 # Main menu
-def main_menu():
-    os.system('clear')
-
-    print ("Welcome to Twitter-bot")
-    print ("Functionality includes, follwoing, retweetm and Like")
-    print ("For the #kittens hashtag")
-    print ("tweet functionality of pictures and text to come \n")
-    menu()
-    return
-
 def menu():
-    os.system('python3 bot.py')
-    os.system('python3 follow-script.py')
-    os.system('python retweet-script.py')
-    os.system('python like_script.py')
+    subprocess.run("python3 photo_dict.py & python3 follow-script.py & python3 retweet_script.py & python3 like_script.py", shell=True)
     return
 
 # Exit program
@@ -34,4 +18,4 @@ def exit():
 # Main Program
 if __name__ == "__main__":
     # Launch main menu
-    main_menu()
+    menu()

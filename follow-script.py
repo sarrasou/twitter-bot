@@ -20,7 +20,7 @@ for tweet in tweepy.Cursor(api.search, q='#kitten').items():
         if not tweet.user.following:
             tweet.user.follow()
             print('Followed')
-            sleep(3600)
+            sleep(10)
 
     except tweepy.TweepError as error:
         print(error.reason)

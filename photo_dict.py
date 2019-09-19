@@ -52,8 +52,6 @@ def write(i):
 
 write(images)
 
-print("Welcome to twitter bot!")
-
 if len(os.listdir('.')) == 0:
     write(images)
 for kitten in os.listdir('.'):
@@ -63,9 +61,9 @@ for kitten in os.listdir('.'):
 
     try:
         os.remove(kitten)
-        print("file removed")
+        print("file removed from folder")
     except:
         print("error removing file")
 
     # 3600 sec = 1 hour
-    time.sleep(3600)
+    time.sleep(10)
