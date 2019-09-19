@@ -12,10 +12,10 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-#website for scraping
-apiurl= "https://pixabay.com/api/?key=13586026-b8e36dbcdb0c4f3d2f358e519&q=kitten+cat+kittens+cats&per_page=50"
+# website for scraping
+apiurl = "https://pixabay.com/api/?key=13586026-b8e36dbcdb0c4f3d2f358e519&q=kitten+cat+kittens+cats&per_page=100"
 
-#download page for parsing
+# download page for parsing
 page = requests.get(apiurl)
 try:
     data = json.loads(page.text)
@@ -25,19 +25,20 @@ except ValueError:
 # gets each image url and store in array
 images = []
 for each in data['hits']:
-    images.append(each ['largeImageURL'])
+    images.append(each['largeImageURL'])
     # print (images)
 
 
 # create directory for image_tags
 if not os.path.exists('kittens'):
     os.mkdir('kittens')
-#move to new directory
+# move to new directory
 os.chdir('kittens')
+
 
 def write(i):
     x = 0
-    #writing images
+    # writing images
     for image in i:
         url = image
         source = requests.get(url)
@@ -46,9 +47,10 @@ def write(i):
                 with open('kitten-' + str(x) + '.jpg', 'wb') as f:
                     f.write(source.content)
                     f.close()
-                    x+=1
+                    x += 1
             else:
-                x+=1        
+                x += 1
+
 
 write(images)
 
