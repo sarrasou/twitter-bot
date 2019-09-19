@@ -13,7 +13,7 @@ menu_actions = {}
 def menu():
     try:
         p = subprocess.call(
-            "python3 photo_dict.py & python3 follow-script.py & python3 retweet_script.py & python3 like_script.py", shell=True)
+            "python3 adopt_script.py & python3 photo_dict.py & python3 follow-script.py & python3 retweet_script.py & python3 like_script.py", shell=True)
     except KeyboardInterrupt:
         p.kill()
 

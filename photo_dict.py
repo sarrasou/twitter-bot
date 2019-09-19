@@ -68,4 +68,4 @@ for kitten in os.listdir('.'):
         print("error removing file")
 
     # 3600 sec = 1 hour
-    time.sleep(10)
+    time.sleep(60)

@@ -12,13 +12,13 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 
-for tweet in tweepy.Cursor(api.search, q='#kitten').items():
+for tweet in tweepy.Cursor(api.search, q='#kittens OR #kitten OR #cat OR #cats').items():
     try:
         print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
         if not tweet.user.following:
             tweet.user.follow()
             print('Followed')
-            sleep(10)
+            sleep(60)
 
     except tweepy.TweepError as error:
         print(error.reason)

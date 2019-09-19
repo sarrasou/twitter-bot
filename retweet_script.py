@@ -14,13 +14,12 @@ api = tweepy.API(auth)
 # Iterates for loop to search and retrive tweets
 # Replace q='#infosec' to your desired hashtag
 # For ex; q='#example'
-for tweet in tweepy.Cursor(api.search, q='#kittens').items():
+for tweet in tweepy.Cursor(api.search, q='#kittens OR #kitten OR #cat OR #cats').items():
     try:
         print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
         tweet.retweet()
         print('Retweeted')
-        sleep(10) # Sleep Time, Should be >5 to avoid blocking
-
+        sleep(60)  # Sleep Time, Should be >5 to avoid blocking
 
     except tweepy.TweepError as error:
         print(error.reason)
