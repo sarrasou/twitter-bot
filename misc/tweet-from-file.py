@@ -7,6 +7,11 @@ from config import *
 from time import sleep
 
 # Authorizes twitter app using credentials from config file
+consumer_key = 'WhLlMIX9tbdjDWq4CZNGOn4M3'
+consumer_secret = 'n9jkOZl6sokzqjFu23Rq1ug0vBJo9YaYqtnpMVvvnQFtbpNpTo'
+access_token = '1167491810429689856-QqcQJVtG8CptNsY3afMuoqTgPXsd4w'
+access_token_secret = 'xSZcGEMxtQqQuQC9CusqRSRxkvsH6VNTiqiO7FocEnaye'
+
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
@@ -22,9 +27,9 @@ auto_file.close()
 for line_tweet in read_file:
     print(line_tweet)
     if line_tweet != '\n':
-	    api.update_status(line_tweet)
+        api.update_status(line_tweet)
     else:
-	    pass
+        pass
 
 # Sleep Time, Should be >5 to avoid blocking
 sleep(3600)
