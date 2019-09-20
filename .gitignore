@@ -1,3 +1,5 @@
 # ignore creation of kittens folder
 /kittens
 /tests.py
+
+*.pem
