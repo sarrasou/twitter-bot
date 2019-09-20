@@ -18,7 +18,7 @@ for tweet in tweepy.Cursor(api.search, q='#kittens OR #kitten OR #cat OR #cats')
         if not tweet.user.following:
             tweet.user.follow()
             print('Followed')
-            sleep(60)
+            sleep(3600)
 
     except tweepy.TweepError as error:
         print(error.reason)

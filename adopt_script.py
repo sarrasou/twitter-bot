@@ -61,7 +61,7 @@ def adopt_script():
             print("error or duplicate tweet")
             continue
 
-        time.sleep(60)
+        time.sleep(3600)
 
 
 while True:

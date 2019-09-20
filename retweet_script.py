@@ -19,7 +19,7 @@ for tweet in tweepy.Cursor(api.search, q='#kittens OR #kitten OR #cat OR #cats')
         print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
         tweet.retweet()
         print('Retweeted')
-        sleep(60)  # Sleep Time, Should be >5 to avoid blocking
+        sleep(3600)  # Sleep Time, Should be >5 to avoid blocking
 
     except tweepy.TweepError as error:
         print(error.reason)

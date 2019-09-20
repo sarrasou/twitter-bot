@@ -21,7 +21,7 @@ def like_script():
             print('@' + tweet.user.screen_name + ' tweeted : ' + tweet.text)
             tweet.favorite()  # Likes the tweet
             print('Liked')
-            sleep(60)  # Sleep Time, Should be >5 to avoid blocking
+            sleep(3600)  # Sleep Time, Should be >5 to avoid blocking
 
         except tweepy.TweepError as error:
             print(error.reason)
