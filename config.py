@@ -1,7 +1,7 @@
-consumer_key = 'WhLlMIX9tbdjDWq4CZNGOn4M3'
-consumer_secret = 'n9jkOZl6sokzqjFu23Rq1ug0vBJo9YaYqtnpMVvvnQFtbpNpTo'
-access_token = '1167491810429689856-QqcQJVtG8CptNsY3afMuoqTgPXsd4w'
-access_token_secret = 'xSZcGEMxtQqQuQC9CusqRSRxkvsH6VNTiqiO7FocEnaye'
+consumer_key = '[consumer key]'
+consumer_secret = '[consumer secret]'
+access_token = '[access token]'
+access_token_secret = '[access secret]'
 # Insert your credentials into single quotes
 
 pet_finder_url = 'https://api.petfinder.com/v2/animals?type=cat&location=Buffalo, NY&status=adoptable&distance=20&sort=recent'
